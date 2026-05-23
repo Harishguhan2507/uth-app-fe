@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/store/auth.store";
 import { Button, Card, Input } from "@/components/ui/primitives";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { toast } from "sonner";
 
 const schema = z.object({
@@ -38,6 +39,9 @@ const LoginPage = () => {
 
   return (
     <div className="app-shell grid min-h-screen place-items-center p-4">
+      <div className="absolute right-4 top-4">
+        <ThemeToggle />
+      </div>
       <Card className="w-full max-w-md p-6 glass">
         <h1 className="text-2xl font-semibold">Welcome to CollabX</h1>
         <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">

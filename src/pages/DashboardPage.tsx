@@ -76,7 +76,7 @@ const DashboardPage = () => {
             <div className="grid gap-3 sm:grid-cols-3">
               {posterStats.map((stat) => (
                 <FadeIn key={stat.label}>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.68)] p-4 backdrop-blur">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 backdrop-blur">
                     <p className="text-xs uppercase tracking-[0.24em] text-[hsl(var(--muted-foreground))]">{stat.label}</p>
                     <p className={`mt-2 text-3xl font-semibold ${stat.accent}`}>{stat.value}</p>
                   </div>
@@ -94,18 +94,18 @@ const DashboardPage = () => {
               <UsersRound className="size-5 text-[hsl(var(--primary))]" />
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.68)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-sm text-[hsl(var(--muted-foreground))]">Bench-ready specialists</p>
                 <p className="mt-2 text-3xl font-semibold">14</p>
                 <p className="mt-1 text-xs text-[hsl(var(--success))]">+4 from last week</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.68)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-sm text-[hsl(var(--muted-foreground))]">Projects needing leads</p>
                 <p className="mt-2 text-3xl font-semibold">3</p>
                 <p className="mt-1 text-xs text-[hsl(var(--accent))]">Focus on critical delivery</p>
               </div>
             </div>
-            <div className="mt-4 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.62)] p-4">
+            <div className="mt-4 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={newUsers}>
                   <defs>
@@ -181,13 +181,13 @@ const DashboardPage = () => {
           <StaggerContainer className="space-y-3">
             {candidates.map((candidate) => (
               <FadeIn key={candidate.name}>
-                <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-3">
+                <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold">{candidate.name}</p>
                       <p className="text-xs tracking-[0.2em] text-[hsl(var(--muted-foreground))]">{candidate.role.toUpperCase()}</p>
                     </div>
-                    <span className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.22em] ${candidate.status === "Approved" ? "bg-emerald-100 text-emerald-600" : candidate.status === "Review" ? "bg-amber-100 text-amber-600" : "bg-rose-100 text-rose-600"}`}>{candidate.status.toUpperCase()}</span>
+                    <span className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.22em] ${candidate.status === "Approved" ? "bg-emerald-500/10 text-emerald-500" : candidate.status === "Review" ? "bg-amber-500/10 text-amber-500" : "bg-rose-500/10 text-rose-500"}`}>{candidate.status.toUpperCase()}</span>
                   </div>
                   <p className="mt-2 text-xs tracking-[0.3em] text-[hsl(var(--muted-foreground))]">SCORE {candidate.score}%</p>
                   <div className="mt-1 h-2 rounded-full bg-[hsl(var(--muted))]">
@@ -217,3 +217,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+

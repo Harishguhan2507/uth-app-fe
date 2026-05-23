@@ -33,7 +33,7 @@ export const AppSidebar = ({ compact, onToggleCompact, session, onLogout }: { co
   <motion.aside
     layout
     transition={{ type: "spring", stiffness: 280, damping: 30 }}
-    className={cn("sticky top-3 hidden h-[calc(100vh-1.5rem)] rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.78)] p-3 shadow-[var(--shadow-soft)] backdrop-blur md:flex md:flex-col", compact ? "w-20" : "w-[250px]")}>
+    className={cn("sticky top-3 hidden h-[calc(100vh-1.5rem)] rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 shadow-[var(--shadow-soft)] backdrop-blur md:flex md:flex-col", compact ? "w-20" : "w-[250px]")}>
     <div className="mb-2 flex items-center justify-end">
       <SidebarCollapseButton compact={compact} onToggle={onToggleCompact} />
     </div>
@@ -67,3 +67,4 @@ export const AppSidebar = ({ compact, onToggleCompact, session, onLogout }: { co
   </motion.aside>
   );
 };
+

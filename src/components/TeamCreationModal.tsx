@@ -57,7 +57,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/45 p-3 sm:items-center">
       <div className="max-h-[92vh] w-full max-w-5xl overflow-auto rounded-[28px] border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-[var(--shadow-floating)]">
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[hsl(var(--border))] bg-[hsl(var(--card)/0.92)] px-5 py-4 backdrop-blur">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[hsl(var(--border))] bg-[hsl(var(--card))] px-5 py-4 backdrop-blur">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Create Team</p>
             <h2 className="mt-1 text-2xl font-semibold">Automatic team generation</h2>
@@ -70,7 +70,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
 
         <div className="grid gap-5 p-5 lg:grid-cols-[320px_minmax(0,1fr)]">
           <section className="space-y-4">
-            <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+            <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
               <label className="text-sm font-medium">Project</label>
               <select
                 value={selectedProjectId}
@@ -81,7 +81,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
               </select>
             </div>
 
-            <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+            <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="font-semibold">{selectedProject.name}</h3>
                 <span className={`rounded-full px-3 py-1 text-xs font-semibold ${statusTone[selectedProject.status]}`}>{selectedProject.status.replace("_", " ")}</span>
@@ -120,7 +120,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
 
           <section className="space-y-4">
             {!generatedTeam ? (
-              <div className="grid min-h-[360px] place-items-center rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--card)/0.58)] p-6 text-center">
+              <div className="grid min-h-[360px] place-items-center rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 text-center">
                 <div>
                   <Sparkles className="mx-auto size-10 text-[hsl(var(--primary))]" />
                   <h3 className="mt-4 text-xl font-semibold">No team generated yet</h3>
@@ -132,15 +132,15 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
             {generatedTeam ? (
               <>
                 <div className="grid gap-3 md:grid-cols-3">
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Coverage</p>
                     <p className="mt-2 text-3xl font-semibold">{generatedTeam.coveragePercentage}%</p>
                   </div>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Avg Experience</p>
                     <p className="mt-2 text-3xl font-semibold">{generatedTeam.averageExperience} yrs</p>
                   </div>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Combined Allocation</p>
                     <p className="mt-2 text-3xl font-semibold">{generatedTeam.totalAllocation}%</p>
                   </div>
@@ -164,7 +164,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
 
                 <div className="grid gap-3 xl:grid-cols-2">
                   {generatedTeam.developers.map((candidate) => (
-                    <article key={candidate.employee.id} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                    <article key={candidate.employee.id} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                       <div className="flex items-center gap-3">
                         <img src={candidate.employee.avatar} alt={candidate.employee.name} className="size-12 rounded-2xl border border-[hsl(var(--border))]" />
                         <div>
@@ -185,7 +185,7 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
                   ))}
                 </div>
 
-                <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                   <p className="font-semibold">Coverage notes</p>
                   <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
                     Missing skills: {generatedTeam.missingSkills.length > 0 ? generatedTeam.missingSkills.join(", ") : "None"}
@@ -199,3 +199,4 @@ export const TeamCreationModal = ({ open, projectId, projects, existingTeam, onC
     </div>
   );
 };
+

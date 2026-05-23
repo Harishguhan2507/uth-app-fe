@@ -23,7 +23,7 @@ export const Input = ({ className, ...props }: React.InputHTMLAttributes<HTMLInp
   <input
     className={cn(
       "w-full rounded-xl border px-3 py-2 text-sm outline-none ring-0 transition",
-      "border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted-foreground))]",
+      "border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted-foreground))]",
       "focus:border-[hsl(var(--primary)/0.7)] focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.16)]",
       className,
     )}

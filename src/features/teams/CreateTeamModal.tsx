@@ -86,7 +86,7 @@ export const CreateTeamModal = ({ open, project, editing, onClose, onSubmit, loa
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/45 p-3 sm:items-center">
       <div className="max-h-[92vh] w-full max-w-lg overflow-auto rounded-[28px] border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-[var(--shadow-floating)]">
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[hsl(var(--border))] bg-[hsl(var(--card)/0.92)] px-5 py-4 backdrop-blur">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[hsl(var(--border))] bg-[hsl(var(--card))] px-5 py-4 backdrop-blur">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">
               {editing ? "Edit Team" : "Create Team"}
@@ -125,7 +125,7 @@ export const CreateTeamModal = ({ open, project, editing, onClose, onSubmit, loa
               {...register("description")}
               rows={3}
               placeholder="Describe the team's purpose and goals..."
-              className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] px-3 py-2 text-sm outline-none transition placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--primary)/0.7)] focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.16)]"
+              className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2 text-sm outline-none transition placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--primary)/0.7)] focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.16)]"
             />
             {errors.description && (
               <p className="mt-1 text-xs text-[hsl(var(--destructive))]">{errors.description.message}</p>
@@ -178,7 +178,7 @@ export const CreateTeamModal = ({ open, project, editing, onClose, onSubmit, loa
               </label>
               <select
                 {...register("projectRole")}
-                className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] px-3 py-2 text-sm outline-none transition focus:border-[hsl(var(--primary)/0.7)] focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.16)]"
+                className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2 text-sm outline-none transition focus:border-[hsl(var(--primary)/0.7)] focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.16)]"
               >
                 <option value="">Select role...</option>
                 {project.requiredRoles.map((role) => (
@@ -246,7 +246,7 @@ export const CreateTeamModal = ({ open, project, editing, onClose, onSubmit, loa
           </div>
 
           {/* Auto-assign note */}
-          <div className="flex items-start gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.6)] p-3">
+          <div className="flex items-start gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
             <Users className="mt-0.5 size-4 shrink-0 text-[hsl(var(--primary))]" />
             <p className="text-xs text-[hsl(var(--muted-foreground))]">
               Team lead and members will be auto-assigned from the project's existing roster based on leadership and experience.
@@ -272,3 +272,4 @@ export const CreateTeamModal = ({ open, project, editing, onClose, onSubmit, loa
     </div>
   );
 };
+

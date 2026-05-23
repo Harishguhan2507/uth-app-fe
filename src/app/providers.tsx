@@ -1,5 +1,4 @@
 import { Toaster } from "sonner";
-import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
@@ -14,15 +13,13 @@ export const AppProviders = () => {
   useEffect(() => bootstrap(), [bootstrap]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="uth_theme" disableTransitionOnChange>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <ErrorBoundary>
-            <AppRoutes />
-          </ErrorBoundary>
-          <Toaster richColors position="top-right" />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <ErrorBoundary>
+          <AppRoutes />
+        </ErrorBoundary>
+        <Toaster richColors position="top-right" />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };

@@ -54,7 +54,7 @@ const ChatPage = () => {
             <h2 className="text-lg font-semibold">AI Chat Assistant</h2>
             <motion.div className="rounded-full border border-[hsl(var(--primary)/0.5)] bg-[hsl(var(--primary)/0.12)] px-2 py-1 text-xs" animate={pulse} transition={{ duration: 2, repeat: Infinity }}><Sparkles className="mr-1 inline size-3" /> Neural Assistant</motion.div>
           </div>
-          <div ref={ref} className="mt-3 h-[430px] space-y-2 overflow-auto rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.45)] p-3">
+          <div ref={ref} className="mt-3 h-[430px] space-y-2 overflow-auto rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
             {messages.map((m, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${m.role === "assistant" ? "bg-[hsl(var(--primary)/0.15)]" : "ml-auto bg-[hsl(var(--foreground))] text-[hsl(var(--background))]"}`}>
                 {m.text || <span className="typing-dots">...</span>}
@@ -62,7 +62,7 @@ const ChatPage = () => {
             ))}
             {thinking ? <AIThinkingLoader /> : null}
           </div>
-          <div className="mt-3 flex flex-wrap gap-2">{prompts.map((p) => <button key={p} onClick={() => send(p)} className="rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.7)] px-3 py-1 text-xs text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--primary)/0.12)] hover:text-[hsl(var(--foreground))]">{p}</button>)}</div>
+          <div className="mt-3 flex flex-wrap gap-2">{prompts.map((p) => <button key={p} onClick={() => send(p)} className="rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-1 text-xs text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--primary)/0.12)] hover:text-[hsl(var(--foreground))]">{p}</button>)}</div>
           <div className="mt-3 flex gap-2">
             <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Try: "Find available React engineers"' onKeyDown={(e) => { if (e.key === "Enter") send(); }} />
             <Button className="border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--card-hover))]"><Mic size={16} /></Button>

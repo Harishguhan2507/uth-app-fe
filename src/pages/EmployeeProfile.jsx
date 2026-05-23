@@ -1,10 +1,10 @@
-﻿import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { employees } from "../data/employees";
 
 function availabilityClass(status) {
-  if (status === "Available now") return "bg-green-100 text-green-700";
-  if (status === "Part-time") return "bg-yellow-100 text-yellow-700";
-  return "bg-slate-100 text-slate-700";
+  if (status === "Available now") return "bg-emerald-500/10 text-emerald-500";
+  if (status === "Part-time") return "bg-amber-500/10 text-amber-500";
+  return "bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))]";
 }
 
 function EmployeeProfile() {
@@ -12,12 +12,10 @@ function EmployeeProfile() {
   const employee = employees.find((item) => String(item.id) === id);
 
   if (!employee) {
-    return <p className="text-sm text-slate-600">Employee not found.</p>;
+    return <p className="text-sm text-[hsl(var(--muted-foreground))]">Employee not found.</p>;
   }
-  const prof =
-    employee.skillProficiency ??
-    employee.skills?.map((s) => ({ name: s, years: 1 })) ??
-    [];
+
+  const prof = employee.skillProficiency ?? employee.skills?.map((s) => ({ name: s, years: 1 })) ?? [];
   const maxYears = Math.max(1, ...prof.map((p) => p.years));
   const gradients = [
     "from-indigo-500 to-pink-500",
@@ -29,68 +27,48 @@ function EmployeeProfile() {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 shadow-[var(--shadow-soft)]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-indigo-100 text-3xl font-bold text-indigo-700">
+            <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-[hsl(var(--primary)/0.12)] text-3xl font-bold text-[hsl(var(--primary))]">
               {employee.initials}
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
-                {employee.name}
-              </h1>
-              <p className="text-sm text-slate-600">
-                {employee.role} · {employee.department}
-              </p>
-              <p className="mt-2 text-sm text-slate-500">
-                Employee ID:{" "}
-                <span className="font-medium text-slate-900">
-                  {employee.id}
-                </span>
+              <h1 className="text-2xl font-bold text-[hsl(var(--foreground))]">{employee.name}</h1>
+              <p className="text-sm text-[hsl(var(--muted-foreground))]">{employee.role} · {employee.department}</p>
+              <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
+                Employee ID: <span className="font-medium text-[hsl(var(--foreground))]">{employee.id}</span>
               </p>
             </div>
           </div>
-
           <div className="flex items-center gap-3">
-            <div className="text-sm text-slate-600">Experience</div>
-            <div className="rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">
+            <div className="text-sm text-[hsl(var(--muted-foreground))]">Experience</div>
+            <div className="rounded-full bg-[hsl(var(--muted))] px-3 py-1 text-sm font-semibold text-[hsl(var(--foreground))]">
               {employee.experience} yrs
             </div>
-            <span
-              className={`rounded-full px-3 py-1 text-sm font-medium ${availabilityClass(employee.availability)}`}
-            >
+            <span className={`rounded-full px-3 py-1 text-sm font-medium ${availabilityClass(employee.availability)}`}>
               {employee.availability}
             </span>
           </div>
         </div>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6">
-        <h2 className="text-base font-semibold text-slate-900">
-          Skill Proficiency
-        </h2>
-        <p className="mt-2 text-sm text-slate-500">
-          Bar chart shows years of experience per skill.
-        </p>
-
+      <section className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="text-base font-semibold text-[hsl(var(--foreground))]">Skill Proficiency</h2>
+        <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">Bar chart shows years of experience per skill.</p>
         <div className="mt-4 space-y-3">
           {prof.map((p, idx) => {
             const percent = Math.round((p.years / maxYears) * 100);
             const gradient = gradients[idx % gradients.length];
             return (
               <div key={p.name} className="flex items-center gap-4">
-                <div className="w-36 text-sm font-medium text-slate-700">
-                  {p.name}
+                <div className="w-36 text-sm font-medium text-[hsl(var(--foreground))]">{p.name}</div>
+                <div className="flex-1 h-4 rounded-full bg-[hsl(var(--muted))] p-[2px]">
+                  <div className={`h-full rounded-full transition-all duration-700 ease-out bg-gradient-to-r ${gradient}`} style={{ width: `${percent}%` }} />
                 </div>
-                <div className="flex-1 h-4 rounded-full bg-slate-100/60 p-[2px]">
-                  <div
-                    className={`h-full rounded-full transition-all duration-700 ease-out bg-gradient-to-r ${gradient} shadow-sm`}
-                    style={{ width: `${percent}%` }}
-                  />
-                </div>
-                <div className="ml-3 w-20 text-sm font-semibold text-slate-700 text-right">
+                <div className="ml-3 w-20 text-right text-sm font-semibold text-[hsl(var(--foreground))]">
                   {p.years} yr{p.years > 1 ? "s" : ""}
-                  <div className="text-xs text-slate-500">{percent}%</div>
+                  <div className="text-xs text-[hsl(var(--muted-foreground))]">{percent}%</div>
                 </div>
               </div>
             );
@@ -98,35 +76,19 @@ function EmployeeProfile() {
         </div>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6">
-        <h2 className="text-base font-semibold text-slate-900">
-          Past projects
-        </h2>
+      <section className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="text-base font-semibold text-[hsl(var(--foreground))]">Past projects</h2>
         <div className="mt-3 space-y-3">
           {employee.pastProjects.map((project) => (
-            <div
-              key={project.name}
-              className="flex items-center justify-between rounded-lg border border-slate-100 p-3"
-            >
+            <div key={project.name} className="flex items-center justify-between rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--muted))] p-3">
               <div>
-                <p className="text-sm font-semibold text-slate-800">
-                  {project.name}
-                </p>
-                <p className="text-xs text-slate-500">
-                  Collaborators: {project.collaborators.join(", ")}
-                </p>
+                <p className="text-sm font-semibold text-[hsl(var(--foreground))]">{project.name}</p>
+                <p className="text-xs text-[hsl(var(--muted-foreground))]">Collaborators: {project.collaborators.join(", ")}</p>
               </div>
               <div className="flex -space-x-2">
                 {project.collaborators.slice(0, 3).map((name) => (
-                  <span
-                    key={name}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-indigo-100 text-[10px] font-semibold text-indigo-700"
-                  >
-                    {name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .slice(0, 2)
-                      .join("")}
+                  <span key={name} className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[hsl(var(--card))] bg-[hsl(var(--primary)/0.12)] text-[10px] font-semibold text-[hsl(var(--primary))]">
+                    {name.split(" ").map((part) => part[0]).slice(0, 2).join("")}
                   </span>
                 ))}
               </div>
@@ -136,10 +98,10 @@ function EmployeeProfile() {
       </section>
 
       <div className="flex gap-3">
-        <button className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+        <button className="rounded-lg bg-[hsl(var(--primary))] px-4 py-2 text-sm font-medium text-white transition hover:brightness-110">
           Request collaboration
         </button>
-        <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+        <button className="rounded-lg border border-[hsl(var(--border))] px-4 py-2 text-sm font-medium text-[hsl(var(--foreground))] transition hover:bg-[hsl(var(--muted))]">
           Message
         </button>
       </div>

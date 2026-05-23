@@ -14,7 +14,7 @@ export const SidebarHeader = ({ compact, session }: { compact: boolean; session:
         <p className="truncate text-sm font-semibold leading-4">{session?.name ?? "User"}</p>
         <p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">Session ends in 9 min</p>
       </div>
-      <button className="ml-auto grid size-8 place-items-center rounded-full bg-emerald-100 text-emerald-600">
+      <button className="ml-auto grid size-8 place-items-center rounded-full bg-emerald-500/10 text-emerald-500">
         <Power size={14} />
       </button>
     </div>

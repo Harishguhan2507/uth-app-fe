@@ -42,7 +42,7 @@ export const SidebarItem = ({ item, compact }: { item: SidebarNavItem; compact: 
                 {item.label}
               </motion.span>
               {!compact && item.badge ? (
-                <span className="ml-auto rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold text-rose-600">
+                <span className="ml-auto rounded-full bg-rose-500/10 px-2 py-0.5 text-[10px] font-semibold text-rose-500">
                   {item.badge}
                 </span>
               ) : null}

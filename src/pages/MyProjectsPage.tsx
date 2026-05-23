@@ -125,7 +125,7 @@ const MyProjectsPage = () => {
 
                 {/* Meta */}
                 <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">
                       Complexity
                     </p>
@@ -133,7 +133,7 @@ const MyProjectsPage = () => {
                       {project.complexity}
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">
                       Team
                     </p>
@@ -141,7 +141,7 @@ const MyProjectsPage = () => {
                       {project.currentTeamSize} / {project.targetTeamSize}
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">
                       Due
                     </p>
@@ -273,19 +273,19 @@ const GeneratedTeamPanel = ({
 
     {/* Stats row */}
     <div className="grid grid-cols-3 gap-3">
-      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3 text-center">
+      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-center">
         <p className="text-2xl font-semibold">{team.coveragePercentage}%</p>
         <p className="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--muted-foreground))]">
           Coverage
         </p>
       </div>
-      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3 text-center">
+      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-center">
         <p className="text-2xl font-semibold">{team.averageExperience}</p>
         <p className="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--muted-foreground))]">
           Avg Yrs
         </p>
       </div>
-      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3 text-center">
+      <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-center">
         <p className="text-2xl font-semibold">{1 + team.developers.length}</p>
         <p className="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--muted-foreground))]">
           Members
@@ -350,7 +350,7 @@ const GeneratedTeamPanel = ({
           {team.developers.map((dev) => (
             <div
               key={dev.employee.id}
-              className="flex items-center gap-3 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3"
+              className="flex items-center gap-3 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3"
             >
               <img
                 src={dev.employee.avatar}
@@ -390,7 +390,7 @@ const GeneratedTeamPanel = ({
     )}
 
     {/* Missing skills / coverage note */}
-    <div className="flex items-start gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.5)] p-3">
+    <div className="flex items-start gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
       {team.missingSkills.length === 0 ? (
         <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-500" />
       ) : (
@@ -406,3 +406,4 @@ const GeneratedTeamPanel = ({
 );
 
 export default MyProjectsPage;
+

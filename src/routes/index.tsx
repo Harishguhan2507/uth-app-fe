@@ -1,7 +1,7 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "@/routes/ProtectedRoute";
-import { AppLayout } from "@/layouts/AppLayout";
+// import { AppLayout } from "@/layouts/AppLayout";
 import { Skeleton } from "@/components/ui/primitives";
 
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
@@ -51,102 +51,100 @@ export const AppRoutes = () => (
     />
 
     <Route element={<ProtectedRoute />}>
-      <Route element={<AppLayout />}>
+      {/* <Route element={<AppLayout />}> */}
+      <Route
+        path="/dashboard"
+        element={
+          <LazyWrap>
+            <DashboardPage />
+          </LazyWrap>
+        }
+      />
+      <Route
+        path="/talent-search"
+        element={
+          <LazyWrap>
+            <TalentSearchPage />
+          </LazyWrap>
+        }
+      />
+      <Route element={<ProtectedRoute roles={["admin", "project_manager"]} />}>
         <Route
-          path="/dashboard"
+          path="/team-builder"
           element={
             <LazyWrap>
-              <DashboardPage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          path="/talent-search"
-          element={
-            <LazyWrap>
-              <TalentSearchPage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          element={<ProtectedRoute roles={["admin", "project_manager"]} />}
-        >
-          <Route
-            path="/team-builder"
-            element={
-              <LazyWrap>
-                <TeamBuilderPage />
-              </LazyWrap>
-            }
-          />
-        </Route>
-        <Route
-          path="/profile"
-          element={
-            <LazyWrap>
-              <ProfilePage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          path="/employee/:id"
-          element={
-            <LazyWrap>
-              <ProfilePage />
-            </LazyWrap>
-          }
-        />
-        <Route element={<ProtectedRoute roles={["admin"]} />}>
-          <Route
-            path="/insights"
-            element={
-              <LazyWrap>
-                <InsightsPage />
-              </LazyWrap>
-            }
-          />
-          <Route
-            path="/analytics"
-            element={
-              <LazyWrap>
-                <SkillAnalyticsPage />
-              </LazyWrap>
-            }
-          />
-        </Route>
-        <Route
-          path="/notifications"
-          element={
-            <LazyWrap>
-              <NotificationsPage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <LazyWrap>
-              <SettingsPage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          path="/chat"
-          element={
-            <LazyWrap>
-              <ChatPage />
-            </LazyWrap>
-          }
-        />
-        <Route
-          path="/my-projects"
-          element={
-            <LazyWrap>
-              <MyProjectsPage />
+              <TeamBuilderPage />
             </LazyWrap>
           }
         />
       </Route>
+      <Route
+        path="/profile"
+        element={
+          <LazyWrap>
+            <ProfilePage />
+          </LazyWrap>
+        }
+      />
+      <Route
+        path="/employee/:id"
+        element={
+          <LazyWrap>
+            <ProfilePage />
+          </LazyWrap>
+        }
+      />
+      <Route element={<ProtectedRoute roles={["admin"]} />}>
+        <Route
+          path="/insights"
+          element={
+            <LazyWrap>
+              <InsightsPage />
+            </LazyWrap>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <LazyWrap>
+              <SkillAnalyticsPage />
+            </LazyWrap>
+          }
+        />
+      </Route>
+      <Route
+        path="/notifications"
+        element={
+          <LazyWrap>
+            <NotificationsPage />
+          </LazyWrap>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <LazyWrap>
+            <SettingsPage />
+          </LazyWrap>
+        }
+      />
+      <Route
+        path="/chat"
+        element={
+          <LazyWrap>
+            <ChatPage />
+          </LazyWrap>
+        }
+      />
+      <Route
+        path="/my-projects"
+        element={
+          <LazyWrap>
+            <MyProjectsPage />
+          </LazyWrap>
+        }
+      />
+      {/* </Route> */}
     </Route>
 
     <Route path="*" element={<Navigate to="/dashboard" replace />} />

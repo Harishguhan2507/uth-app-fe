@@ -85,7 +85,7 @@ export const TeamList = ({ project }: Props) => {
           {[1, 2].map((i) => <Skeleton key={i} className="h-44" />)}
         </div>
       ) : teams.length === 0 ? (
-        <div className="mt-3 grid place-items-center rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--card)/0.5)] py-10 text-center">
+        <div className="mt-3 grid place-items-center rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--card))] py-10 text-center">
           <p className="text-sm font-medium">No teams yet</p>
           <p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">
             Create a team to start assigning members to this project.
@@ -120,3 +120,4 @@ export const TeamList = ({ project }: Props) => {
     </div>
   );
 };
+

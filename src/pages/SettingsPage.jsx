@@ -1,8 +1,8 @@
-﻿function SettingsPage() {
+function SettingsPage() {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5">
-      <h2 className="text-lg font-semibold text-slate-900">Settings</h2>
-      <p className="mt-2 text-sm text-slate-600">Notification, profile and platform settings can be configured here.</p>
+    <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5 shadow-[var(--shadow-soft)]">
+      <h2 className="text-lg font-semibold text-[hsl(var(--foreground))]">Settings</h2>
+      <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">Notification, profile and platform settings can be configured here.</p>
     </div>
   );
 }

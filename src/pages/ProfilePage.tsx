@@ -80,19 +80,19 @@ const ProfilePage = () => {
             </div>
 
             <div className="grid gap-3 md:grid-cols-4">
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Experience</p>
                 <p className="mt-2 text-3xl font-semibold">{employee.experience} yrs</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Performance</p>
                 <p className="mt-2 text-3xl font-semibold">{employee.performanceScore}</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Allocation</p>
                 <p className="mt-2 text-3xl font-semibold">{employee.currentProjectAllocation}%</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Profile completion</p>
                 <p className="mt-2 text-3xl font-semibold">{employee.stats.profileCompletion}%</p>
               </div>
@@ -106,11 +106,11 @@ const ProfilePage = () => {
             </div>
             <p className="mt-3 text-sm text-[hsl(var(--muted-foreground))]">Add more certifications, project outcomes, and mentoring highlights to increase profile discoverability.</p>
             <div className="mt-5 space-y-3">
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                 <p className="text-sm font-medium">Availability status</p>
                 <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">{availabilityLabel(employee.availability)} with {employee.currentProjectAllocation}% current allocation.</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                 <p className="text-sm font-medium">Recent activity</p>
                 <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">{employee.recentActivity}</p>
               </div>
@@ -133,7 +133,7 @@ const ProfilePage = () => {
               <textarea
                 value={draftBio}
                 onChange={(event) => setDraftBio(event.target.value)}
-                className="mt-4 min-h-32 w-full rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.7)] p-4 text-sm outline-none focus:border-[hsl(var(--primary)/0.6)]"
+                className="mt-4 min-h-32 w-full rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 text-sm outline-none focus:border-[hsl(var(--primary)/0.6)]"
               />
             ) : (
               <p className="mt-4 text-sm leading-7 text-[hsl(var(--muted-foreground))]">{draftBio || employee.bio}</p>
@@ -147,7 +147,7 @@ const ProfilePage = () => {
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {employee.skills.map((skill) => (
-                <span key={skill} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] px-3 py-2 text-sm">{skill}</span>
+                <span key={skill} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2 text-sm">{skill}</span>
               ))}
             </div>
           </AnimatedCard>
@@ -160,7 +160,7 @@ const ProfilePage = () => {
             <StaggerContainer className="mt-4 space-y-3">
               {employee.projectHistory.map((item) => (
                 <FadeIn key={item.id}>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <h3 className="font-semibold">{item.name}</h3>
@@ -188,7 +188,7 @@ const ProfilePage = () => {
             </div>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {employee.certificationDetails.map((certification) => (
-                <div key={certification.name} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.74)] p-4">
+                <div key={certification.name} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                   <p className="font-semibold">{certification.name}</p>
                   <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">{certification.issuer}</p>
                   <p className="mt-3 text-xs uppercase tracking-[0.24em] text-[hsl(var(--muted-foreground))]">{certification.year}</p>
@@ -205,15 +205,15 @@ const ProfilePage = () => {
               <h2 className="text-lg font-semibold">Quick stats</h2>
             </div>
             <div className="mt-4 grid gap-3">
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-[hsl(var(--muted-foreground))]">Completed projects</p>
                 <p className="mt-2 text-2xl font-semibold">{employee.stats.completedProjects}</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-[hsl(var(--muted-foreground))]">Mentoring hours</p>
                 <p className="mt-2 text-2xl font-semibold">{employee.stats.mentoringHours}</p>
               </div>
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-4">
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-[hsl(var(--muted-foreground))]">Certifications</p>
                 <p className="mt-2 text-2xl font-semibold">{employee.stats.certifications}</p>
               </div>
@@ -239,7 +239,7 @@ const ProfilePage = () => {
             </div>
             <div className="mt-4 space-y-3">
               {employee.projectHistory.map((project) => (
-                <div key={project.id} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-4">
+                <div key={project.id} className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
                   <p className="font-semibold">{project.name}</p>
                   <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">{project.summary}</p>
                 </div>
@@ -265,3 +265,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+

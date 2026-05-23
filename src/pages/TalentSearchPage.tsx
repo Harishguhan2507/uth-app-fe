@@ -147,7 +147,7 @@ const TalentSearchPage = () => {
                 "rounded-xl border px-4 py-2 text-sm transition",
                 location.pathname === tab.path
                   ? "border-[hsl(var(--primary)/0.45)] bg-[hsl(var(--primary)/0.12)] text-[hsl(var(--foreground))]"
-                  : "border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]",
+                  : "border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]",
               )}
             >
               {tab.label}
@@ -197,7 +197,7 @@ const TalentSearchPage = () => {
                 <select
                   value={filters.role}
                   onChange={(event) => setFilters((current) => ({ ...current, role: event.target.value }))}
-                  className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.7)] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2 text-sm"
                 >
                   <option value="all">All roles</option>
                   {filterOptions.roles.map((role) => <option key={role} value={role}>{role}</option>)}
@@ -280,7 +280,7 @@ const TalentSearchPage = () => {
                 <select
                   value={filters.projectAssignment}
                   onChange={(event) => setFilters((current) => ({ ...current, projectAssignment: event.target.value as TalentFilters["projectAssignment"] }))}
-                  className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.7)] px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-3 py-2 text-sm"
                 >
                   {assignmentOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                 </select>
@@ -306,7 +306,7 @@ const TalentSearchPage = () => {
 
             <div className="mt-3 flex flex-wrap gap-2">
               {activePills.map((pill) => (
-                <span key={pill.key} className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.76)] px-2 py-1 text-xs">
+                <span key={pill.key} className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-2 py-1 text-xs">
                   {pill.label}
                   <button
                     type="button"
@@ -412,11 +412,11 @@ const TalentSearchPage = () => {
                             {item.reasoning.map((reason) => <li key={reason}>{reason}</li>)}
                           </ul>
                           <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                            <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3 text-sm">
+                            <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-sm">
                               <p className="font-medium">Current projects</p>
                               <p className="mt-1 text-[hsl(var(--muted-foreground))]">{item.employee.currentProjectAssignments.join(", ") || "Bench"}</p>
                             </div>
-                            <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3 text-sm">
+                            <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-sm">
                               <p className="font-medium">Performance snapshot</p>
                               <p className="mt-1 text-[hsl(var(--muted-foreground))]">Performance {item.employee.performanceScore} · Collaboration {item.employee.collaborationScore}</p>
                             </div>
@@ -445,7 +445,7 @@ const TalentSearchPage = () => {
             <div className="mt-3 space-y-2">
               {compareRows.length === 0 ? <p className="rounded-xl border border-dashed border-[hsl(var(--border))] p-3 text-xs text-[hsl(var(--muted-foreground))]">No employees selected yet.</p> : null}
               {compareRows.map((person) => (
-                <div key={person.employee.id} className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-3 text-sm">
+                <div key={person.employee.id} className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-sm">
                   <p className="font-medium">{person.employee.name}</p>
                   <p className="text-xs text-[hsl(var(--muted-foreground))]">{person.matchPercentage}% match · {person.employee.currentProjectAllocation}% allocated</p>
                 </div>
@@ -458,7 +458,7 @@ const TalentSearchPage = () => {
             <div className="mt-3 space-y-2">
               {shortlistRows.length === 0 ? <p className="rounded-xl border border-dashed border-[hsl(var(--border))] p-3 text-xs text-[hsl(var(--muted-foreground))]">Save top profiles here for project staffing handoff.</p> : null}
               {shortlistRows.map((row) => (
-                <div key={row.employee.id} className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] p-3 text-sm">
+                <div key={row.employee.id} className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 text-sm">
                   <p className="font-medium">{row.employee.name}</p>
                   <p className="text-xs text-[hsl(var(--muted-foreground))]">{row.employee.role} · {availabilityLabel(row.employee.availability)}</p>
                 </div>
@@ -472,3 +472,4 @@ const TalentSearchPage = () => {
 };
 
 export default TalentSearchPage;
+

@@ -62,15 +62,15 @@ const TeamBuilderPage = () => {
         </div>
 
         <div className="mt-5 grid gap-3 md:grid-cols-3">
-          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
             <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Open projects</p>
             <p className="mt-2 text-3xl font-semibold">{stats.openProjects}</p>
           </div>
-          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
             <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Available specialists</p>
             <p className="mt-2 text-3xl font-semibold">{stats.availableEmployees}</p>
           </div>
-          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-4">
+          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4">
             <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Avg allocation</p>
             <p className="mt-2 text-3xl font-semibold">{stats.averageAllocation}%</p>
           </div>
@@ -96,11 +96,11 @@ const TeamBuilderPage = () => {
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Complexity</p>
                     <p className="mt-2 font-semibold capitalize">{project.complexity}</p>
                   </div>
-                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.72)] p-3">
+                  <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3">
                     <p className="text-xs uppercase tracking-[0.28em] text-[hsl(var(--muted-foreground))]">Team demand</p>
                     <p className="mt-2 font-semibold">{project.currentTeamSize}/{project.targetTeamSize}</p>
                   </div>
@@ -161,3 +161,4 @@ const TeamBuilderPage = () => {
 };
 
 export default TeamBuilderPage;
+

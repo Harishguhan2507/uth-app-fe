@@ -6,7 +6,7 @@ export const SidebarCollapseButton = ({ compact, onToggle }: { compact: boolean;
     type="button"
     onClick={onToggle}
     whileTap={{ scale: 0.95 }}
-    className="inline-flex items-center rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.7)] p-1.5 text-[hsl(var(--muted-foreground))] transition hover:text-[hsl(var(--foreground))]"
+    className="inline-flex items-center rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-1.5 text-[hsl(var(--muted-foreground))] transition hover:text-[hsl(var(--foreground))]"
     aria-label={compact ? "Expand sidebar" : "Collapse sidebar"}
   >
     <motion.span animate={{ rotate: compact ? 180 : 0 }} transition={{ duration: 0.24 }}>
