@@ -13,7 +13,7 @@ export const MOCK_USERS: AppUser[] = [
 ];
 
 export const NAV_BY_ROLE = {
-  admin: ["/dashboard", "/directory", "/insights", "/analytics", "/notifications", "/settings"],
-  project_manager: ["/dashboard", "/talent-search", "/team-builder", "/directory", "/chat", "/notifications", "/settings"],
-  employee: ["/dashboard", "/directory", "/chat", "/notifications", "/settings"],
+  admin: ["/dashboard", "/talent-search", "/team-builder", "/directory", "/profile", "/insights", "/analytics", "/notifications", "/settings"],
+  project_manager: ["/dashboard", "/talent-search", "/team-builder", "/directory", "/profile", "/chat", "/notifications", "/settings"],
+  employee: ["/dashboard", "/directory", "/profile", "/chat", "/notifications", "/settings"],
 } as const;

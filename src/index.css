@@ -1,13 +1,128 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: 210 33% 98%;
+  --foreground: 222 36% 14%;
+  --muted: 210 30% 94%;
+  --muted-foreground: 217 14% 45%;
+  --card: 0 0% 100%;
+  --card-hover: 210 30% 97%;
+  --border: 214 24% 88%;
+  --primary: 223 78% 57%;
+  --secondary: 187 72% 43%;
+  --accent: 31 92% 61%;
+  --success: 152 61% 42%;
+  --destructive: 0 74% 58%;
+  --glass-bg: 0 0% 100% / 0.72;
+  --glass-bg-strong: 0 0% 100% / 0.92;
+  --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --shadow-floating: 0 24px 50px rgba(15, 23, 42, 0.16);
+  --shadow-glow: 0 0 0 1px rgba(79, 70, 229, 0.08), 0 16px 28px rgba(79, 70, 229, 0.12);
+  --chart-grid: rgba(148, 163, 184, 0.18);
+  --chart-axis: rgba(51, 65, 85, 0.72);
+  --chart-tooltip-bg: rgba(255, 255, 255, 0.97);
+  --chart-tooltip-border: rgba(148, 163, 184, 0.38);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 222 42% 8%;
+  --foreground: 210 40% 96%;
+  --muted: 222 28% 14%;
+  --muted-foreground: 215 18% 70%;
+  --card: 222 33% 11%;
+  --card-hover: 221 31% 15%;
+  --border: 217 20% 24%;
+  --primary: 219 89% 66%;
+  --secondary: 187 72% 47%;
+  --accent: 36 91% 60%;
+  --success: 152 57% 50%;
+  --destructive: 0 80% 68%;
+  --glass-bg: 222 29% 12% / 0.72;
+  --glass-bg-strong: 221 31% 14% / 0.94;
+  --shadow-soft: 0 22px 42px rgba(2, 6, 23, 0.36);
+  --shadow-floating: 0 30px 70px rgba(2, 6, 23, 0.58);
+  --shadow-glow: 0 0 0 1px rgba(96, 165, 250, 0.08), 0 16px 32px rgba(14, 165, 233, 0.18);
+  --chart-grid: rgba(148, 163, 184, 0.12);
+  --chart-axis: rgba(203, 213, 225, 0.68);
+  --chart-tooltip-bg: rgba(15, 23, 42, 0.96);
+  --chart-tooltip-border: rgba(100, 116, 139, 0.36);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
 
 body {
   margin: 0;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 24%),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 * {
   box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.app-shell {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.1), transparent 22%),
+    radial-gradient(circle at 85% 10%, rgba(37, 99, 235, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 22%),
+    hsl(var(--background));
+}
+
+.surface {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  box-shadow: var(--shadow-soft);
+}
+
+.glass {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, hsl(var(--muted)) 15%, hsl(var(--card-hover)) 35%, hsl(var(--muted)) 55%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

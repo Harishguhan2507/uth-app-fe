@@ -41,13 +41,13 @@ export const AppLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f6f8] text-[#1f2937]">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <CommandPalette open={open} onOpenChange={setOpen} />
 
       <AnimatePresence>
         {mobileOpen ? (
           <motion.div className="fixed inset-0 z-50 bg-black/30 md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)}>
-            <motion.aside initial={{ x: -300 }} animate={{ x: 0 }} exit={{ x: -300 }} transition={{ type: "spring", stiffness: 260, damping: 28 }} className="h-full w-[280px] border-r border-[#e5e7eb] bg-white p-3 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <motion.aside initial={{ x: -300 }} animate={{ x: 0 }} exit={{ x: -300 }} transition={{ type: "spring", stiffness: 260, damping: 28 }} className="h-full w-[280px] border-r border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 shadow-[var(--shadow-floating)]" onClick={(e) => e.stopPropagation()}>
               <SidebarHeader compact={false} session={session} />
               <div className="space-y-1.5">
                 {sidebarNavItems.map((item) => (
@@ -66,18 +66,18 @@ export const AppLayout = () => {
         <AppSidebar compact={sidebarCompact} onToggleCompact={() => setSidebarCompact((s) => !s)} session={session} onLogout={handleLogout} />
 
         <main className="min-w-0 flex-1">
-          <header className="mb-4 flex items-center gap-3 rounded-2xl border border-[#e5e7eb] bg-white px-4 py-3">
-            <button className="rounded-lg border border-[#e5e7eb] p-2 md:hidden" onClick={() => setMobileOpen(true)}>{mobileOpen ? <X size={16} /> : <Menu size={16} />}</button>
+          <header className="mb-4 flex items-center gap-3 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.78)] px-4 py-3 shadow-[var(--shadow-soft)] backdrop-blur">
+            <button className="rounded-lg border border-[hsl(var(--border))] p-2 md:hidden" onClick={() => setMobileOpen(true)}>{mobileOpen ? <X size={16} /> : <Menu size={16} />}</button>
             <div className="hidden md:block">
-              <p className="text-[28px] font-semibold leading-7">AI Interview Platform</p>
-              <p className="text-[10px] tracking-[0.35em] text-[#9ca3af]">DASHBOARD</p>
+              <p className="text-[28px] font-semibold leading-7">AI Talent Matching</p>
+              <p className="text-[10px] tracking-[0.35em] text-[hsl(var(--muted-foreground))]">WORKSPACE</p>
             </div>
             <div className="relative mx-auto w-full max-w-[560px]">
-              <Search className="absolute left-3 top-2.5 size-4 text-[#9ca3af]" />
-              <Input className="border-[#e5e7eb] bg-white pl-9 text-[#374151] placeholder:text-[#9ca3af]" placeholder="Search candidates, interviews, events..." />
+              <Search className="absolute left-3 top-2.5 size-4 text-[hsl(var(--muted-foreground))]" />
+              <Input className="pl-9" placeholder="Search employees, projects, skills..." />
             </div>
-            <button className="hidden items-center gap-1 rounded-lg border border-[#e5e7eb] px-2 py-1 text-xs text-[#6b7280] sm:flex" onClick={() => setOpen(true)}><Command size={12} />K</button>
-            <button className="rounded-lg border border-[#e5e7eb] p-2"><Bell size={16} /></button>
+            <button className="hidden items-center gap-1 rounded-lg border border-[hsl(var(--border))] px-2 py-1 text-xs text-[hsl(var(--muted-foreground))] sm:flex" onClick={() => setOpen(true)}><Command size={12} />K</button>
+            <button className="rounded-lg border border-[hsl(var(--border))] p-2"><Bell size={16} /></button>
             <ThemeToggle />
           </header>
 

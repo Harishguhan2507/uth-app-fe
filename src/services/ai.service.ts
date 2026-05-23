@@ -1,53 +1,34 @@
-import { employees } from "@/mock/data";
+import { employees, projects } from "@/mock/data";
 import { sleep } from "@/utils";
-import type { TalentMatch } from "@/types";
-
-const normalize = (value: string) => value.toLowerCase();
+import { createTalentMatches, generateTeam } from "@/utils/talent";
 
 export const aiService = {
-  async talentSearch(query: string): Promise<TalentMatch[]> {
-    await sleep(700);
-    const keywords = query.toLowerCase().split(/\s+/).filter(Boolean);
-
-    return employees
-      .map((employee) => {
-        const overlap = employee.skills.filter((skill) => keywords.some((k) => normalize(skill).includes(k)));
-        const matchPercentage = Math.min(98, Math.round((overlap.length / Math.max(1, employee.skills.length)) * 75 + employee.collaborationScore * 0.25));
-        return {
-          employee,
-          skillOverlap: overlap,
-          matchPercentage,
-          reasoning: [
-            `Strong ${employee.skills.slice(0, 2).join(" + ")} expertise`,
-            `Worked on ${employee.projects[0]} and ${employee.projects[1]}`,
-            employee.availability === "immediate" ? "Available immediately" : `Availability: ${employee.availability.replace("_", " ")}`,
-            `Collaboration score: ${employee.collaborationScore}`,
-          ],
-        } satisfies TalentMatch;
-      })
-      .sort((a, b) => b.matchPercentage - a.matchPercentage)
-      .slice(0, 8);
+  async talentSearch(query: string) {
+    await sleep(260);
+    return createTalentMatches(employees, query);
   },
 
-  async teamRecommendation(projectDescription: string, selectedIds: string[]) {
-    await sleep(800);
-    const team = employees.filter((e) => selectedIds.includes(e.id));
-    const missingSkills = ["Kubernetes", "MLOps", "GraphQL"].filter((skill) => !team.some((m) => m.skills.includes(skill))).slice(0, 2);
-    return {
-      chemistryScore: 72 + Math.min(24, team.length * 3),
-      projectSuccess: 74 + Math.min(20, team.length * 2),
-      risks: team.filter((m) => m.role.includes("Lead")).length > 1 ? ["Risk: Multiple dominant leaders detected"] : ["Leadership structure looks stable"],
-      balance: `Excellent frontend/backend balance for ${projectDescription || "target project"}`,
-      missingSkills,
-      why: "Why: Recommendation is based on skill overlap, availability, and prior collaboration outcomes.",
-    };
+  async teamRecommendation(projectId: string) {
+    await sleep(320);
+    const project = projects.find((entry) => entry.id === projectId);
+    if (!project) {
+      throw new Error("Project not found");
+    }
+    return generateTeam(employees, project);
   },
 
   async chat(prompt: string) {
-    await sleep(500);
+    await sleep(220);
     const p = prompt.toLowerCase();
-    if (p.includes("react")) return "Found 9 React engineers; 4 are available immediately. Top picks: Employee 3, 7, 14.";
-    if (p.includes("ml")) return "Strongest ML engineers: Employee 5, 11, 20 based on match score + recent ML project history.";
-    return "Suggested team for AI dashboard project: 1 frontend lead, 2 full-stack engineers, 1 ML engineer, 1 data engineer. Why: highest cross-functional success trend.";
+    if (p.includes("react")) {
+      const matches = createTalentMatches(employees, "react typescript");
+      return `Found ${matches.length} React-aligned profiles. Top available picks: ${matches.filter((item) => item.employee.availability === "available").slice(0, 3).map((item) => item.employee.name).join(", ")}.`;
+    }
+    if (p.includes("ml") || p.includes("ai")) {
+      const project = projects.find((entry) => entry.id === "proj-nova");
+      const team = project ? generateTeam(employees, project) : null;
+      return `Strongest AI/ML recommendation: ${team?.lead?.employee.name ?? "No lead available"} with ${team?.developers.slice(0, 2).map((member) => member.employee.name).join(", ") ?? "no developer matches"} for Nova Analytics.`;
+    }
+    return "Recommended staffing pattern: 1 lead, 2 senior developers, 1 mid-level specialist, and 1 platform contributor for balanced delivery coverage.";
   },
 };

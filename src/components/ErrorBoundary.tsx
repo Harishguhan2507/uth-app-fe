@@ -1,4 +1,4 @@
-import { Component, type ErrorInfo, type ReactNode } from "react";
+import { Component, type ReactNode } from "react";
 import { Card } from "@/components/ui/primitives";
 
 interface Props { children: ReactNode }
@@ -11,7 +11,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
-  componentDidCatch(_error: Error, _info: ErrorInfo) {
+  componentDidCatch() {
     // no-op for mock app
   }
 
