@@ -1,25 +1,48 @@
-﻿import { Bell, Search } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+﻿import { Bell, Search } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const headerMap = {
-  '/dashboard': { title: 'Dashboard', subtitle: 'Today overview' },
-  '/find-talent': { title: 'Find Talent', subtitle: 'AI-assisted talent discovery' },
-  '/my-projects': { title: 'My Projects', subtitle: 'Track project staffing status' },
-  '/profile': { title: 'My Profile', subtitle: 'Your expertise and availability' },
-  '/directory': { title: 'Directory', subtitle: 'Organisation-wide talent directory' },
-  '/ai-features': { title: 'AI Features', subtitle: 'Platform intelligence modules' },
-  '/settings': { title: 'Settings', subtitle: 'Preferences and account controls' },
+  "/dashboard": { title: "Dashboard", subtitle: "Today overview" },
+  "/find-talent": {
+    title: "Find Talent",
+    subtitle: "AI-assisted talent discovery",
+  },
+  "/my-projects": {
+    title: "My Projects",
+    subtitle: "Track project staffing status",
+  },
+  "/profile": {
+    title: "My Profile",
+    subtitle: "Your expertise and availability",
+  },
+  "/directory": {
+    title: "Directory",
+    subtitle: "Organisation-wide talent directory",
+  },
+  "/ai-features": {
+    title: "AI Features",
+    subtitle: "Platform intelligence modules",
+  },
+  "/settings": {
+    title: "Settings",
+    subtitle: "Preferences and account controls",
+  },
 };
 
 function TopHeader() {
   const { pathname } = useLocation();
-  const key = pathname.startsWith('/profile/') ? '/profile' : pathname;
-  const header = headerMap[key] || { title: 'UTH-Match', subtitle: 'Talent & Resource Platform' };
+  const key = pathname.startsWith("/profile/") ? "/profile" : pathname;
+  const header = headerMap[key] || {
+    title: "CollabX",
+    subtitle: "Talent & Resource Platform",
+  };
 
   return (
     <header className="flex h-14 items-center justify-between border-b border-slate-200 bg-white px-6">
       <div>
-        <h1 className="text-[15px] font-semibold text-slate-900">{header.title}</h1>
+        <h1 className="text-[15px] font-semibold text-slate-900">
+          {header.title}
+        </h1>
         <p className="text-xs text-slate-500">{header.subtitle}</p>
       </div>
 

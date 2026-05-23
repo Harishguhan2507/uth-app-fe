@@ -20,6 +20,10 @@ export const AppLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [sidebarCompact, setSidebarCompact] = useState(() => localStorage.getItem("uth_sidebar_compact") === "1");
 
+  const visibleNavItems = sidebarNavItems.filter(
+    (item) => !item.roles || (session && item.roles.includes(session.role))
+  );
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
@@ -50,7 +54,7 @@ export const AppLayout = () => {
             <motion.aside initial={{ x: -300 }} animate={{ x: 0 }} exit={{ x: -300 }} transition={{ type: "spring", stiffness: 260, damping: 28 }} className="h-full w-[280px] border-r border-[hsl(var(--border))] bg-[hsl(var(--card))] p-3 shadow-[var(--shadow-floating)]" onClick={(e) => e.stopPropagation()}>
               <SidebarHeader compact={false} session={session} />
               <div className="space-y-1.5">
-                {sidebarNavItems.map((item) => (
+                {visibleNavItems.map((item) => (
                   <div key={item.to} onClick={() => setMobileOpen(false)}>
                     <SidebarItem item={item} compact={false} />
                   </div>

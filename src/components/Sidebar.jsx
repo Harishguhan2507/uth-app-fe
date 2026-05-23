@@ -53,7 +53,7 @@ function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 flex h-screen w-[220px] flex-col bg-slate-900 p-4">
       <div>
-        <h1 className="text-xl font-semibold text-white">UTH-Match</h1>
+        <h1 className="text-xl font-semibold text-white">CollabX</h1>
         <p className="mt-1 text-xs text-slate-500">
           Talent & Resource Platform
         </p>

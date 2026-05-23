@@ -136,3 +136,40 @@ export interface GeneratedTeam {
   averageExperience: number;
   totalAllocation: number;
 }
+
+export type TeamStatus = "open" | "closed";
+export type WorkMode = "remote" | "hybrid" | "onsite";
+export type TeamAvailability = "immediate" | "next_sprint" | "next_quarter";
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  avatar: string;
+  role: string;
+}
+
+export interface Team {
+  id: string;
+  projectId: string;
+  name: string;
+  description: string;
+  requiredSkills: string[];
+  teamSize: number;
+  projectRole: string;
+  workMode: WorkMode;
+  availability: TeamAvailability;
+  status: TeamStatus;
+  teamLead: TeamMember | null;
+  members: TeamMember[];
+  createdAt: string;
+}
+
+export interface CreateTeamPayload {
+  name: string;
+  description: string;
+  requiredSkills: string[];
+  teamSize: number;
+  projectRole: string;
+  workMode: WorkMode;
+  availability: TeamAvailability;
+}

@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { UserRole } from "@/types";
 
 export interface SidebarNavItem {
   to: string;
@@ -6,4 +7,5 @@ export interface SidebarNavItem {
   icon: LucideIcon;
   ai?: boolean;
   badge?: string;
+  roles?: UserRole[];
 }

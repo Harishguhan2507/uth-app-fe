@@ -15,6 +15,7 @@ const SkillAnalyticsPage = lazy(() => import("@/pages/SkillAnalyticsPage"));
 const NotificationsPage = lazy(() => import("@/pages/NotificationsPage"));
 const SettingsPage = lazy(() => import("@/pages/SettingsPage"));
 const ChatPage = lazy(() => import("@/pages/ChatPage"));
+const MyProjectsPage = lazy(() => import("@/pages/MyProjectsPage"));
 
 const LazyWrap = ({ children }: { children: ReactNode }) => (
   <Suspense
@@ -60,16 +61,16 @@ export const AppRoutes = () => (
           }
         />
         <Route
+          path="/talent-search"
+          element={
+            <LazyWrap>
+              <TalentSearchPage />
+            </LazyWrap>
+          }
+        />
+        <Route
           element={<ProtectedRoute roles={["admin", "project_manager"]} />}
         >
-          <Route
-            path="/talent-search"
-            element={
-              <LazyWrap>
-                <TalentSearchPage />
-              </LazyWrap>
-            }
-          />
           <Route
             path="/team-builder"
             element={
@@ -134,6 +135,14 @@ export const AppRoutes = () => (
           element={
             <LazyWrap>
               <ChatPage />
+            </LazyWrap>
+          }
+        />
+        <Route
+          path="/my-projects"
+          element={
+            <LazyWrap>
+              <MyProjectsPage />
             </LazyWrap>
           }
         />
