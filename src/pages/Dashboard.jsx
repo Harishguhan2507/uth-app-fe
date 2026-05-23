@@ -1,9 +1,10 @@
+import { useMemo } from 'react';
 import { AlertTriangle, Briefcase, UserCheck, Users } from 'lucide-react';
 import AIInsightBox from '../components/AIInsightBox';
 import MetricCard from '../components/MetricCard';
 import SkillBar from '../components/SkillBar';
 import { employees } from '../data/employees';
-import { recentRequests } from '../data/projects';
+import { projects, recentRequests } from '../data/projects';
 
 const demandBars = [
   { label: 'Python', value: 87, colorClass: 'bg-indigo-500' },
@@ -29,13 +30,26 @@ function statusClass(status) {
 function Dashboard() {
   const topMatches = [...employees].sort((a, b) => b.match - a.match).slice(0, 4);
 
+  const stats = useMemo(() => {
+    const totalEmployees = employees.length;
+    const availableNow = employees.filter((e) => e.availability === 'Available now').length;
+    const activeProjects = projects.filter((p) => p.status === 'Active').length;
+
+    // Skills needed across all projects that no employee covers
+    const allEmployeeSkills = new Set(employees.flatMap((e) => e.skills.map((s) => s.toLowerCase())));
+    const allNeededSkills = [...new Set(projects.flatMap((p) => p.skillsNeeded.map((s) => s.toLowerCase())))];
+    const skillGaps = allNeededSkills.filter((s) => !allEmployeeSkills.has(s)).length;
+
+    return { totalEmployees, availableNow, activeProjects, skillGaps };
+  }, []);
+
   return (
     <div className="space-y-6">
       <section className="grid gap-4 xl:grid-cols-4">
-        <MetricCard title="Total Employees" value="248" changeText="+12 this quarter" icon={Users} iconClass="bg-violet-500/10 text-violet-500" />
-        <MetricCard title="Available Now" value="67" changeText="+5 from last week" icon={UserCheck} iconClass="bg-emerald-500/10 text-emerald-500" />
-        <MetricCard title="Active Projects" value="34" changeText="+2 ongoing" icon={Briefcase} iconClass="bg-sky-500/10 text-sky-500" />
-        <MetricCard title="Skill Gaps" value="12" changeText="-1 after upskilling" icon={AlertTriangle} iconClass="bg-amber-500/10 text-amber-500" />
+        <MetricCard title="Total Employees" value={stats.totalEmployees} changeText={`${stats.totalEmployees} in the system`} icon={Users} iconClass="bg-violet-500/10 text-violet-500" />
+        <MetricCard title="Available Now" value={stats.availableNow} changeText={`${stats.availableNow} of ${stats.totalEmployees} available`} icon={UserCheck} iconClass="bg-emerald-500/10 text-emerald-500" />
+        <MetricCard title="Active Projects" value={stats.activeProjects} changeText={`${projects.length} total projects`} icon={Briefcase} iconClass="bg-sky-500/10 text-sky-500" />
+        <MetricCard title="Skill Gaps" value={stats.skillGaps} changeText="skills not covered by team" icon={AlertTriangle} iconClass="bg-amber-500/10 text-amber-500" />
       </section>
 
       <section className="grid gap-4 xl:grid-cols-2">
