@@ -62,7 +62,9 @@ function MyProfile() {
             const gradient = gradients[idx % gradients.length];
             return (
               <div key={p.name} className="flex items-center gap-4">
-                <div className="w-36 text-sm font-medium text-slate-700">{p.name}</div>
+                <div className="w-36 text-sm font-medium text-slate-700">
+                  {p.name}
+                </div>
                 <div className="flex-1 h-4 rounded-full bg-slate-100/60 p-[2px]">
                   <div
                     className={`h-full rounded-full transition-all duration-700 ease-out bg-gradient-to-r ${gradient} shadow-sm`}
